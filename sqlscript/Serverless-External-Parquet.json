@@ -1,0 +1,17 @@
+{
+	"name": "Serverless-External-Parquet",
+	"properties": {
+		"content": {
+			"query": "create DATABASE kavidb\nCREATE MASTER KEY ENCRYPTION BY PASSWORD= 'P@ssword@1231'\n\nCREATE DATABASE SCOPED CREDENTIAL [ADLS_credential]\nWITH IDENTITY='SHARED ACCESS SIGNATURE',  \nSECRET ='sp=r&st=2023-08-12T05:51:06Z&se=2023-08-12T13:51:06Z&spr=https&sv=2022-11-02&sr=c&sig=n%2BCfkDDuYctsU1jOBdGZMcY%2BNUHM0qkPuyxhrhfNurs%3D'\nGO\n\nCREATE EXTERNAL DATA SOURCE log_data_parquet\nWITH\n(\n    LOCATION = 'abfss://parquet@minestoragefordata.dfs.core.windows.net'\n)\n\n--create external file format\nCREATE EXTERNAL FILE FORMAT TEXTFILEFORMAT_parquet WITH( \nFORMAT_TYPE= PARQUET,\nDATA_COMPRESSION ='org.apache.hadoop.io.compress.SnappyCodec'\n   );\n\n\nCREATE EXTERNAL TABLE[logdata_parquet1]\n(\n    [Correlation id] [VARCHAR](200) NULL,\n    [Operation name][VARCHAR](200) NULL,\n    [Status][VARCHAR](100) NULL,\n    [Event category][VARCHAR](100) NULL,\n    [Level][VARCHAR](200) NULL,\n    [Time][VARCHAR] (200)NULL,\n    [Subscription][VARCHAR](200) NULL,\n    [Event initiated by] [VARCHAR](1000) NULL,\n    [Resource type] [VARCHAR](1000) NULL,\n    [Resource group][VARCHAR](1000) NULL,\n    [Resource][VARCHAR](2000) NULL)\n    WITH\n    (\n        LOCATION= '/log.parquet', \n        DATA_SOURCE= log_data_parquet,\n        FILE_FORMAT= TEXTFILEFORMAT_parquet\n    )\n\n\nselect * from [logdata_parquet1]\n\n\nselect [Operation name] ,COUNT([Operation name]) AS [Operation_count]\nFROM [logdata_parquet1]\nGROUP BY [Operation name]\nORDER BY [Operation_count]\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "kavidb",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

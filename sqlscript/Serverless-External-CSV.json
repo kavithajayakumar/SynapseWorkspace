@@ -1,0 +1,17 @@
+{
+	"name": "Serverless-External-CSV",
+	"properties": {
+		"content": {
+			"query": "\n\nCREATE EXTERNAL DATA SOURCE log_data\nWITH\n(\n    LOCATION = 'abfss://csv@minestoragefordata.dfs.core.windows.net'\n\n\n)\n\n--external file format\nCREATE EXTERNAL FILE FORMAT TEXTFILEFORMAT\nWITH( FORMAT_TYPE= DELIMITEDTEXT,\nFORMAT_OPTIONS( \n    FIELD_TERMINATOR= ',',\n    FIRST_ROW= 2\n    \n    ))\n\nCREATE EXTERNAL TABLE[logdata_csv]\n(\n    [Correlation id] [VARCHAR](200) NULL,\n    [Operation name][VARCHAR](200) NULL,\n    [Status][VARCHAR](100) NULL,\n    [Event category][VARCHAR](100) NULL,\n    [Level][VARCHAR](200) NULL,\n    [Time][DATETIME] NULL,\n    [Subscription][VARCHAR](200) NULL,\n    [Event initiated by] [VARCHAR](1000) NULL,\n    [Resource type] [VARCHAR](1000) NULL,\n    [Resource group][VARCHAR](1000) NULL,\n    [Resource][VARCHAR](2000) NULL)\n    WITH\n    (\n        LOCATION= '/Log.csv', \n        DATA_SOURCE= log_data,\n        FILE_FORMAT= TEXTFILEFORMAT\n    )\n\nuse appdb\nselect * from [logdata_csv]\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "kavidb",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

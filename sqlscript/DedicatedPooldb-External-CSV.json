@@ -1,0 +1,17 @@
+{
+	"name": "DedicatedPooldb-External-CSV",
+	"properties": {
+		"content": {
+			"query": "\nCREATE DATABASE SCOPED CREDENTIAL [STORAGE_ACC_CSV_ADLS_credential]\nWITH IDENTITY ='ACCESS KEY'\n,SECRET= 'kCBPcVCjFywndBGO2m68G9rV5xdGXWBD10rTl6CIN6SVHkPPRDsVnYwoh6GhfXC/lf8Fp1fMPiMe+AStvnBSxQ=='\n\n\nCREATE EXTERNAL DATA SOURCE log_data_csv\nWITH\n(\n    LOCATION = 'abfss://csv@minestoragefordata.dfs.core.windows.net',\n    TYPE= HADOOP\n)\n\n\nCREATE EXTERNAL FILE FORMAT TEXTFILEFORMAT\nWITH( FORMAT_TYPE= DELIMITEDTEXT,\nFORMAT_OPTIONS( \n    FIELD_TERMINATOR= ',',\n    FIRST_ROW= 2\n    \n    ))\n\n\n    CREATE EXTERNAL TABLE[logdata_csv]\n(\n    [Correlation id] [VARCHAR](200) NULL,\n    [Operation name][VARCHAR](200) NULL,\n    [Status][VARCHAR](100) NULL,\n    [Event category][VARCHAR](100) NULL,\n    [Level][VARCHAR](200) NULL,\n    [Time][VARCHAR](200) NULL,\n    [Subscription][VARCHAR](200) NULL,\n    [Event initiated by] [VARCHAR](1000) NULL,\n    [Resource type] [VARCHAR](1000) NULL,\n    [Resource group][VARCHAR](1000) NULL,\n    [Resource][VARCHAR](2000) NULL)\n    WITH\n    (\n        LOCATION= '/Log.csv', \n        DATA_SOURCE= log_data_csv,\n        FILE_FORMAT= TEXTFILEFORMAT\n    )\n\n\nselect * from [logdata_csv]\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "pooldb",
+				"poolName": "pooldb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

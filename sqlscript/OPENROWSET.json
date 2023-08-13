@@ -1,0 +1,17 @@
+{
+	"name": "OPENROWSET",
+	"properties": {
+		"content": {
+			"query": "\nSELECT * FROM\nOPENROWSET(BULK  'https://minestoragefordata.blob.core.windows.net/parquet',\nFORMAT= 'parquet') AS log_dataTemp\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "kavidb",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

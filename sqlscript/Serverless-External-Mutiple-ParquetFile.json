@@ -1,0 +1,17 @@
+{
+	"name": "Serverless-External-Mutiple-ParquetFile",
+	"properties": {
+		"content": {
+			"query": "DROP EXTERNAL TABLE logdata_parquet\n\nCREATE EXTERNAL TABLE[logdata_parquet]\n(\n    [Correlation id] [VARCHAR](200) NULL,\n    [Operation name][VARCHAR](200) NULL,\n    [Status][VARCHAR](100) NULL,\n    [Event category][VARCHAR](100) NULL,\n    [Level][VARCHAR](200) NULL,\n    [Time][VARCHAR] (200)NULL,\n    [Subscription][VARCHAR](200) NULL,\n    [Event initiated by] [VARCHAR](1000) NULL,\n    [Resource type] [VARCHAR](1000) NULL,\n    [Resource group][VARCHAR](1000) NULL,\n    [Resource][VARCHAR](2000) NULL)\n    WITH\n    (\n        LOCATION= '/', \n        DATA_SOURCE= log_data_parquet,\n        FILE_FORMAT= TEXTFILEFORMAT_parquet\n    )\n\nSELECT * FROM logdata_parquet  ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "kavidb",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
