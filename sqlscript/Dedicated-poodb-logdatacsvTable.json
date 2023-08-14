@@ -1,0 +1,17 @@
+{
+	"name": "Dedicated-poodb-logdatacsvTable",
+	"properties": {
+		"content": {
+			"query": " CREATE TABLE [logdata_csv_table]\n(\n    [Correlation id] [VARCHAR](200) NULL,\n    [Operation name][VARCHAR](200) NULL,\n    [Status][VARCHAR](100) NULL,\n    [Event category][VARCHAR](100) NULL,\n    [Level][VARCHAR](200) NULL,\n    [Time][DATETIME] NULL,\n    [Subscription][VARCHAR](200) NULL,\n    [Event initiated by] [VARCHAR](1000) NULL,\n    [Resource type] [VARCHAR](1000) NULL,\n    [Resource group][VARCHAR](1000) NULL,\n    [Resource][VARCHAR](2000) NULL\n    )\n\n    select * from [logdata_csv_table]\n\n--  put same data lake location \n    COPY into [logdata_csv_table] from 'https://minestoragefordata.blob.core.windows.net/csv/Log.csv'\n    WITH\n    ( FILE_TYPE= 'csv',\n    CREDENTIAL= (IDENTITY= 'Storage Account Key',\n    SECRET= 'kCBPcVCjFywndBGO2m68G9rV5xdGXWBD10rTl6CIN6SVHkPPRDsVnYwoh6GhfXC/lf8Fp1fMPiMe+AStvnBSxQ==' ),\n    FIRSTROW= 2) \n\n\n\n    ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "pooldb",
+				"poolName": "pooldb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
