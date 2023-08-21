@@ -1,0 +1,17 @@
+{
+	"name": "DedicatedPooldb-sysTable-X",
+	"properties": {
+		"content": {
+			"query": "SELECT* FROM logdata_parquet_table\n\nselect * from sys.database_scoped_credentials\n\nselect * from sys.external_data_sources\n\nselect * from sys.external_file_formats\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "pooldb",
+				"poolName": "pooldb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
