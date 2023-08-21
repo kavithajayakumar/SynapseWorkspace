@@ -1,0 +1,17 @@
+{
+	"name": "DedicatedpooldbTable-polybase",
+	"properties": {
+		"content": {
+			"query": "-- Recrating the table using this distribution \nCREATE TABLE [logdata1_parquet_table]\nWITH \n(\n    DISTRIBUTION = ROUND_ROBIN\n)\n\nAS \nSELECT * FROM logdata_parquet\n-- To check \nSELECT * FROM [logdata1_parquet_table] \n\n--to delate the records \nDELETE  from logdata_parquet_table\nSELECT * from [logdata_parquet_table]\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "pooldb",
+				"poolName": "pooldb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
