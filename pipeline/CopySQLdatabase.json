@@ -1,5 +1,5 @@
 {
-	"name": "sqlDatabaseTosynapse",
+	"name": "CopySQLdatabase",
 	"properties": {
 		"activities": [
 			{

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [Correlation id]\n,[Operation name]\n,[Status]\n,[Event category]\n,[Level]\n,[Time]\n,[Subscription]\n,[Event initiated by]\n,[Resource type]\n,[Resource group]\n,[Resource]\n FROM [dbo].[logdata1_parquet_table]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "pooldb",
+				"poolName": "pooldb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
