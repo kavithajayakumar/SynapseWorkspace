@@ -2,7 +2,7 @@
 	"name": "Serverless-jsonTable",
 	"properties": {
 		"content": {
-			"query": "-- This is auto-generated code\nSELECT TOP 100\n    jsonContent\n/* --> place the keys that you see in JSON documents in the WITH clause:\n       , JSON_VALUE (jsonContent, '$.key1') AS header1\n       , JSON_VALUE (jsonContent, '$.key2') AS header2\n*/\nFROM\n    OPENROWSET(\n        BULK 'https://minestoragefordata.dfs.core.windows.net/json/Log.json',\n        FORMAT = 'CSV',\n        FIELDQUOTE = '0x0b',\n        FIELDTERMINATOR ='0x0b',\n        ROWTERMINATOR = '0x0a'\n    )\n    WITH (\n        jsonContent varchar(MAX)\n    ) AS [result]\n",
+			"query": "-- This is auto-generated code\nSELECT TOP 100 JSON_VALUE(jsonContent, '$.Correlationid')AS Correlationid,\nJSON_VALUE(jsonContent, '$.Operationname')AS Operationname,\nJSON_VALUE(jsonContent, '$.Status')AS Status,\nJSON_VALUE(jsonContent, '$.Event category')AS Eventcategory,\nJSON_VALUE(jsonContent, '$.Level')AS Level,\nJSON_VALUE(jsonContent, '$.Time')AS Time,\nJSON_VALUE(jsonContent, '$.Subscription')AS Subscription,\nJSON_VALUE(jsonContent, '$.Event initiated by')AS Eventinitiatedby,\nJSON_VALUE(jsonContent, '$.Resource type')AS Resourcetype,\nJSON_VALUE(jsonContent, '$.Resource group')AS Resourcegroup,\nJSON_VALUE(jsonContent, '$.Resource')AS Resource\n\nFROM\n    OPENROWSET(\n        BULK 'https://minestoragefordata.dfs.core.windows.net/json/Log.json',\n        FORMAT = 'CSV',\n        FIELDQUOTE = '0x0b',\n        FIELDTERMINATOR ='0x0b',\n        ROWTERMINATOR = '0x0a'\n    )\n    WITH (\n        jsonContent varchar(MAX)\n    ) AS [result]\n",
 			"metadata": {
 				"language": "sql"
 			},
