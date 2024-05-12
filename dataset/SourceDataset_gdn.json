@@ -1,0 +1,53 @@
+{
+	"name": "SourceDataset_gdn",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "appdbser",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductID",
+				"type": "int",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ProductName",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "ProductModelID",
+				"type": "int",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ProductModelName",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			},
+			{
+				"name": "ProductCategoryID",
+				"type": "int",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "productCategoryName",
+				"type": "nvarchar",
+				"precision": 0,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DimProduct"
+		}
+	}
+}

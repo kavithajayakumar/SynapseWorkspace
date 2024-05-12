@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [ProductID]\n,[Name]\n,[ProductNumber]\n,[Color]\n,[StandardCost]\n,[ListPrice]\n,[Size]\n,[Weight]\n,[ProductCategoryID]\n,[ProductModelID]\n,[SellStartDate]\n,[SellEndDate]\n,[DiscontinuedDate]\n,[ThumbNailPhoto]\n,[ThumbnailPhotoFileName]\n,[rowguid]\n,[ModifiedDate]\n FROM [SalesLT].[Product]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "pooldb",
+				"poolName": "pooldb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

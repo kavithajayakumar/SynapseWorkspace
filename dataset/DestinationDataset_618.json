@@ -1,0 +1,63 @@
+{
+	"name": "DestinationDataset_618",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [
+			{
+				"name": "Correlation id",
+				"type": "varchar"
+			},
+			{
+				"name": "Operation name",
+				"type": "varchar"
+			},
+			{
+				"name": "Status",
+				"type": "varchar"
+			},
+			{
+				"name": "Event category",
+				"type": "varchar"
+			},
+			{
+				"name": "Level",
+				"type": "varchar"
+			},
+			{
+				"name": "Time",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Subscription",
+				"type": "varchar"
+			},
+			{
+				"name": "Event initiated by",
+				"type": "varchar"
+			},
+			{
+				"name": "Resource type",
+				"type": "varchar"
+			},
+			{
+				"name": "Resource group",
+				"type": "varchar"
+			},
+			{
+				"name": "Resource",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "pool_logdata"
+		},
+		"sqlPool": {
+			"referenceName": "pooldb",
+			"type": "SqlPoolReference"
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"name": "DestinationDataset_4mm",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SalesLT",
+			"table": "Product"
+		},
+		"sqlPool": {
+			"referenceName": "pooldb",
+			"type": "SqlPoolReference"
+		}
+	}
+}
